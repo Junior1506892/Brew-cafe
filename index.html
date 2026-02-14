@@ -1,0 +1,2565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Brew & Bean Café | Artisanal Coffee Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS RESET & GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-brown: #8B4513;
+            --light-cream: #F5F1E6;
+            --accent-green: #2E8B57;
+            --dark-brown: #5D2906;
+            --medium-brown: #A0522D;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --radius: 15px;
+        }
+
+        .dark-theme {
+            --primary-brown: #D2691E;
+            --light-cream: #1A1A1A;
+            --accent-green: #3CB371;
+            --dark-brown: #8B4513;
+            --medium-brown: #A0522D;
+            --text-dark: #F0F0F0;
+            --text-light: #CCCCCC;
+            --white: #2A2A2A;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-cream);
+            transition: var(--transition);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-brown);
+        }
+
+        .dark-theme h1,
+        .dark-theme h2,
+        .dark-theme h3,
+        .dark-theme h4 {
+            color: var(--primary-brown);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .btn-primary, .btn-secondary {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-brown);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-brown);
+            border: 2px solid var(--primary-brown);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-brown);
+            color: white;
+        }
+
+        .dark-theme .btn-secondary {
+            color: var(--primary-brown);
+            border-color: var(--primary-brown);
+        }
+
+        .dark-theme .btn-secondary:hover {
+            background-color: var(--primary-brown);
+            color: var(--white);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark-theme header {
+            background-color: var(--white);
+            border-bottom: 1px solid #444;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo svg {
+            height: 40px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+        }
+
+        /* Desktop Navigation */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            background-color: var(--primary-brown);
+            color: white;
+        }
+
+        .dark-theme .nav-links li a:hover,
+        .dark-theme .nav-links li a.active {
+            background-color: var(--primary-brown);
+            color: white;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--primary-brown);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-cream);
+            box-shadow: var(--shadow);
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            background-color: var(--primary-brown);
+            color: white;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-brown);
+            cursor: pointer;
+            transition: var(--transition);
+            display: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--light-cream);
+            box-shadow: var(--shadow);
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-brown);
+            color: white;
+        }
+
+        /* ===== HERO / CAROUSEL ===== */
+        .hero {
+            padding-top: 130px;
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide:nth-child(1) {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+        }
+
+        .carousel-slide:nth-child(2) {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+        }
+
+        .carousel-slide:nth-child(3) {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+        }
+
+        .slide-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .slide-content h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .slide-content p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: 30px;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .carousel-btn.prev {
+            left: 20px;
+        }
+
+        .carousel-btn.next {
+            right: 20px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        /* ===== FEATURED PRODUCTS ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark-theme .product-card {
+            background-color: var(--white);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            padding: 20px 20px 10px;
+            font-size: 1.5rem;
+        }
+
+        .product-card p {
+            padding: 0 20px;
+            color: var(--text-light);
+            flex: 1;
+        }
+
+        .product-card .price {
+            display: block;
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .product-card .btn-primary {
+            margin: 0 20px 20px;
+        }
+
+        /* ===== PAGE SECTIONS ===== */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 120px 0 50px;
+            background-color: var(--white);
+            margin-top: 0;
+        }
+
+        .dark-theme .page-header {
+            background-color: var(--white);
+        }
+
+        .page-header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--text-light);
+        }
+
+        /* ===== ABOUT PAGE STYLES ===== */
+        .mission-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .mission-section img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            height: auto;
+        }
+
+        .mission-content h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 20px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .dark-theme .team-card {
+            background-color: var(--white);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid var(--light-cream);
+        }
+
+        .dark-theme .team-card img {
+            border-color: var(--white);
+        }
+
+        .team-card .role {
+            color: var(--accent-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .values-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .dark-theme .value-item {
+            background-color: var(--white);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .value-item i {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        .value-item h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* ===== MENU PAGE STYLES ===== */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background-color: var(--white);
+            border: 2px solid var(--primary-brown);
+            border-radius: 50px;
+            color: var(--primary-brown);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .dark-theme .tab-btn {
+            background-color: var(--white);
+            border-color: var(--primary-brown);
+            color: var(--primary-brown);
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background-color: var(--primary-brown);
+            color: white;
+        }
+
+        .menu-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .menu-section.active {
+            display: block;
+        }
+
+        .menu-table {
+            overflow-x: auto;
+            margin-top: 30px;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .dark-theme .menu-table {
+            background-color: var(--white);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dark-theme th,
+        .dark-theme td {
+            border-bottom-color: #555;
+        }
+
+        th {
+            background-color: var(--light-cream);
+            font-weight: 700;
+        }
+
+        .dark-theme th {
+            background-color: rgba(0,0,0,0.1);
+        }
+
+        .beans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .bean-card {
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .dark-theme .bean-card {
+            background-color: var(--white);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .bean-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .bean-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .bean-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .special-notes {
+            margin-top: 60px;
+            padding: 30px;
+            background-color: var(--accent-green);
+            color: white;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .special-notes h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        /* ===== EVENTS PAGE STYLES ===== */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .event-card {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .dark-theme .event-card {
+            background-color: var(--white);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-card.featured {
+            border: 3px solid var(--accent-green);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .event-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            background-color: var(--primary-brown);
+            color: white;
+            min-width: 80px;
+            border-radius: 10px;
+        }
+
+        .event-date .day {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .event-date .month {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .event-content {
+            padding: 0 25px 25px;
+            flex: 1;
+        }
+
+        .event-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .event-time {
+            color: var(--accent-green);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .event-tags {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 5px 15px;
+            background-color: var(--light-cream);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .dark-theme .tag {
+            background-color: rgba(0,0,0,0.1);
+        }
+
+        .event-register {
+            padding: 10px 25px;
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .event-register:hover {
+            background-color: var(--primary-brown);
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 30px auto 0;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px 20px;
+            border: 2px solid var(--primary-brown);
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+            background-color: var(--white);
+            color: var(--text-dark);
+        }
+
+        .dark-theme .newsletter-form input {
+            background-color: var(--white);
+            color: var(--text-dark);
+            border-color: var(--primary-brown);
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background-color: var(--primary-brown);
+            color: white;
+            border: none;
+            border-radius: 0 50px 50px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--accent-green);
+        }
+
+        /* ===== CONTACT PAGE STYLES ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card i {
+            font-size: 2rem;
+            color: var(--accent-green);
+        }
+
+        .map-container {
+            margin-top: 40px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-placeholder {
+            position: relative;
+            height: 300px;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-overlay {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 20px;
+        }
+
+        .dark-theme .map-overlay {
+            background-color: rgba(42, 42, 42, 0.95);
+        }
+
+        .contact-form-section {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--light-cream);
+            color: var(--text-dark);
+        }
+
+        .hours-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .hours-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        .contact-cta {
+            text-align: center;
+            padding: 40px;
+            background-color: var(--primary-brown);
+            color: white;
+            border-radius: var(--radius);
+            margin-top: 50px;
+        }
+
+        .contact-cta h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        /* ===== FAQ MODAL STYLES ===== */
+        .faq-container {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .faq-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--primary-brown);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-question i {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+        }
+
+        .faq-answer {
+            padding-left: 30px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .dark-theme .faq-answer {
+            color: #aaa;
+        }
+
+        .faq-category {
+            margin-bottom: 20px;
+        }
+
+        .faq-category h4 {
+            color: var(--accent-green);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--primary-brown);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            cursor: pointer;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent-green);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== MODAL STYLES ===== */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+            color: var(--text-dark);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 20px;
+            color: var(--primary-brown);
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .modal-content h4 {
+            margin: 20px 0 10px;
+            color: var(--accent-green);
+        }
+
+        .modal-content label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .modal-content input,
+        .modal-content select,
+        .modal-content textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: var(--light-cream);
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .modal-content textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .modal-buttons .cancel-btn {
+            background-color: #ccc;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: #333;
+        }
+
+        .modal-buttons .cancel-btn:hover {
+            background-color: #999;
+            color: white;
+        }
+
+        /* ===== NOTIFICATION STYLES ===== */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+            max-width: 90%;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .mission-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-150%);
+                opacity: 0;
+                transition: all 0.4s ease;
+                z-index: 999;
+                pointer-events: none;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links li a {
+                display: block;
+                padding: 15px;
+                border-radius: 0;
+                width: 100%;
+            }
+
+            .hero {
+                height: 70vh;
+                min-height: 500px;
+                padding-top: 120px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-form-section {
+                padding: 25px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                border-radius: 50px;
+                margin-bottom: 10px;
+            }
+
+            .modal-content {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            .logo svg {
+                height: 35px;
+            }
+            
+            .carousel-btn {
+                display: none;
+            }
+            
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                width: calc(50% - 5px);
+            }
+            
+            .event-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .info-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .modal-buttons button {
+                width: 100%;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+            }
+
+            .faq-answer {
+                padding-left: 25px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER & NAVIGATION ===== -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <!-- Coffee Cup SVG Logo -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="50" height="50">
+                        <circle cx="50" cy="50" r="45" fill="#8B4513"/>
+                        <ellipse cx="35" cy="40" rx="12" ry="8" fill="#5D2906"/>
+                        <ellipse cx="65" cy="40" rx="12" ry="8" fill="#5D2906"/>
+                        <path d="M30,30 Q50,10 70,30" stroke="#F5F1E6" stroke-width="4" fill="none"/>
+                        <path d="M28,35 Q50,15 72,35" stroke="#F5F1E6" stroke-width="3" fill="none"/>
+                        <circle cx="50" cy="65" r="8" fill="#2E8B57"/>
+                    </svg>
+                    <h1>Brew & Bean</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a class="nav-link active" data-page="home">Home</a></li>
+                    <li><a class="nav-link" data-page="about">About</a></li>
+                    <li><a class="nav-link" data-page="menu">Menu</a></li>
+                    <li><a class="nav-link" data-page="events">Events</a></li>
+                    <li><a class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button id="themeToggle" class="theme-btn" title="Toggle theme">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HOME SECTION ===== -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="carousel">
+                <div class="carousel-slide active">
+                    <div class="slide-content">
+                        <h2>Artisanal Coffee Experience</h2>
+                        <p>Specialty brews from ethically sourced beans around the world</p>
+                        <button class="btn-primary nav-link" data-page="menu">View Our Menu</button>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <h2>Cozy Workspace & Wi-Fi</h2>
+                        <p>Perfect spot for remote work with premium coffee</p>
+                        <button class="btn-primary nav-link" data-page="about">Learn More</button>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <h2>Monthly Tasting Events</h2>
+                        <p>Join our coffee workshops and tasting sessions</p>
+                        <button class="btn-primary nav-link" data-page="events">Upcoming Events</button>
+                    </div>
+                </div>
+                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Products -->
+        <section class="featured-products">
+            <div class="container">
+                <h2 class="section-title">Our Featured Brews</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Espresso" loading="lazy">
+                        <h3>Signature Espresso</h3>
+                        <p>Rich, bold, and perfectly balanced single-origin espresso</p>
+                        <span class="price">$4.50</span>
+                        <button class="btn-primary order-btn" data-item="Signature Espresso" data-price="4.50">Order Now</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cold Brew" loading="lazy">
+                        <h3>Cold Brew Delight</h3>
+                        <p>Smooth, refreshing, 12-hour steeped cold brew</p>
+                        <span class="price">$5.00</span>
+                        <button class="btn-primary order-btn" data-item="Cold Brew Delight" data-price="5.00">Order Now</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pastry" loading="lazy">
+                        <h3>Fresh Pastries</h3>
+                        <p>Daily baked croissants, muffins, and scones</p>
+                        <span class="price">From $3.50</span>
+                        <button class="btn-primary order-btn" data-item="Fresh Pastries" data-price="3.50">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Teaser -->
+        <section class="about-teaser">
+            <div class="container">
+                <div class="teaser-content" style="text-align: center; padding: 60px 20px; background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; border-radius: var(--radius); box-shadow: var(--shadow);">
+                    <h2 style="font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 20px;">More Than Just Coffee</h2>
+                    <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; color: var(--text-light);">We're a community space where every cup tells a story. Our beans are sourced directly from sustainable farms, and every drink is crafted with care.</p>
+                    <button class="btn-secondary nav-link" data-page="about">Our Story <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="page-section">
+        <div class="page-header">
+            <h1>Our Story</h1>
+            <p>From bean to brew - our journey of passion</p>
+        </div>
+        
+        <div class="container">
+            <section class="mission-section">
+                <div class="mission-content">
+                    <h2>Our Mission</h2>
+                    <p>To create a community space where exceptional coffee, genuine connections, and sustainable practices come together. We believe every cup should tell a story of quality, ethics, and craftsmanship.</p>
+                    <p>Founded in 2018 by Alex Morgan, Brew & Bean started as a small kiosk with a big dream: to bring specialty coffee to our neighborhood while supporting ethical farming practices.</p>
+                </div>
+                <div class="mission-image">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee beans" loading="lazy">
+                </div>
+            </section>
+
+            <section class="team-section" style="margin-top: 80px;">
+                <h2 class="section-title">Meet Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <!-- Male image for Alex Morgan -->
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Alex Morgan" loading="lazy">
+                        <h3>Alex Morgan</h3>
+                        <p class="role">Head Barista & Owner</p>
+                        <p>10+ years in specialty coffee industry</p>
+                    </div>
+                    <div class="team-card">
+                        <!-- Female image for Samira Chen -->
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Samira Chen" loading="lazy">
+                        <h3>Samira Chen</h3>
+                        <p class="role">Coffee Roaster</p>
+                        <p>Expert in single-origin bean profiles</p>
+                    </div>
+                    <div class="team-card">
+                        <!-- Male image for Marcus Rodriguez -->
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Marcus Rodriguez" loading="lazy">
+                        <h3>Marcus Rodriguez</h3>
+                        <p class="role">Pastry Chef</p>
+                        <p>Creates delicious pairings for our brews</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="values-section" style="margin-top: 80px;">
+                <h2 class="section-title">Our Values</h2>
+                <div class="values-list">
+                    <div class="value-item">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Sustainability</h3>
+                        <p>Ethically sourced beans from certified farms</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-heart"></i>
+                        <h3>Community</h3>
+                        <p>A welcoming space for all coffee lovers</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-award"></i>
+                        <h3>Quality</h3>
+                        <p>Every drink crafted to perfection</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-recycle"></i>
+                        <h3>Eco-Friendly</h3>
+                        <p>Compostable cups and zero-waste initiatives</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- ===== MENU SECTION ===== -->
+    <section id="menu" class="page-section">
+        <div class="page-header">
+            <h1>Our Menu</h1>
+            <p>Carefully crafted beverages and fresh treats</p>
+        </div>
+        
+        <div class="container">
+            <!-- Menu Tabs -->
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-tab="coffee">Coffee</button>
+                <button class="tab-btn" data-tab="tea">Tea & More</button>
+                <button class="tab-btn" data-tab="pastry">Pastries</button>
+                <button class="tab-btn" data-tab="beans">Coffee Beans</button>
+            </div>
+
+            <!-- Coffee Menu -->
+            <section class="menu-section active" id="coffee-tab">
+                <div style="width: 100%; height: 250px; border-radius: 15px; overflow: hidden; margin-bottom: 40px; box-shadow: var(--shadow);">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Coffee Bar" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                </div>
+                <h2 style="text-align: center; margin-bottom: 30px;">Coffee & Espresso</h2>
+                <div class="menu-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Description</th>
+                                <th>Small</th>
+                                <th>Large</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Espresso</td>
+                                <td>Single origin, rich and bold</td>
+                                <td>$3.50</td>
+                                <td>$4.50</td>
+                                <td><button class="btn-primary order-btn" data-item="Espresso" data-price="3.50">Order</button></td>
+                            </tr>
+                            <tr>
+                                <td>Americano</td>
+                                <td>Espresso with hot water</td>
+                                <td>$4.00</td>
+                                <td>$5.00</td>
+                                <td><button class="btn-primary order-btn" data-item="Americano" data-price="4.00">Order</button></td>
+                            </tr>
+                            <tr>
+                                <td>Cappuccino</td>
+                                <td>Espresso with steamed milk foam</td>
+                                <td>$4.50</td>
+                                <td>$5.50</td>
+                                <td><button class="btn-primary order-btn" data-item="Cappuccino" data-price="4.50">Order</button></td>
+                            </tr>
+                            <tr>
+                                <td>Latte</td>
+                                <td>Espresso with steamed milk</td>
+                                <td>$5.00</td>
+                                <td>$6.00</td>
+                                <td><button class="btn-primary order-btn" data-item="Latte" data-price="5.00">Order</button></td>
+                            </tr>
+                            <tr>
+                                <td>Cold Brew</td>
+                                <td>12-hour steeped, smooth</td>
+                                <td>$5.00</td>
+                                <td>$6.00</td>
+                                <td><button class="btn-primary order-btn" data-item="Cold Brew" data-price="5.00">Order</button></td>
+                            </tr>
+                            <tr>
+                                <td>Pour Over</td>
+                                <td>Single origin, manual brew</td>
+                                <td>$6.00</td>
+                                <td>$7.50</td>
+                                <td><button class="btn-primary order-btn" data-item="Pour Over" data-price="6.00">Order</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Tea Menu -->
+            <section class="menu-section" id="tea-tab">
+                <h2 style="text-align: center; margin-bottom: 30px;">Tea & Other Beverages</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Black Tea" loading="lazy">
+                        <h3>Black Tea</h3>
+                        <p>Earl Grey, English Breakfast, Chai</p>
+                        <span class="price">$4.00</span>
+                        <button class="btn-primary order-btn" data-item="Black Tea" data-price="4.00">Order Now</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Green Tea" loading="lazy">
+                        <h3>Green Tea</h3>
+                        <p>Sencha, Jasmine, Matcha Latte</p>
+                        <span class="price">$4.50</span>
+                        <button class="btn-primary order-btn" data-item="Green Tea" data-price="4.50">Order Now</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hot Chocolate" loading="lazy">
+                        <h3>Hot Chocolate</h3>
+                        <p>Dark chocolate, homemade</p>
+                        <span class="price">$5.00</span>
+                        <button class="btn-primary order-btn" data-item="Hot Chocolate" data-price="5.00">Order Now</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fresh Juices" loading="lazy">
+                        <h3>Fresh Juices</h3>
+                        <p>Orange, Apple, Carrot-Ginger</p>
+                        <span class="price">$6.00</span>
+                        <button class="btn-primary order-btn" data-item="Fresh Juice" data-price="6.00">Order Now</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pastry Menu -->
+            <section class="menu-section" id="pastry-tab">
+                <h2 style="text-align: center; margin-bottom: 30px;">Fresh Pastries</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Butter Croissant" loading="lazy">
+                        <h3>Butter Croissant</h3>
+                        <p>Flaky, buttery, baked daily</p>
+                        <span class="price">$3.50</span>
+                        <button class="btn-primary order-btn" data-item="Butter Croissant" data-price="3.50">Order Now</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1623334044303-241021148842?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chocolate Croissant" loading="lazy">
+                        <h3>Chocolate Croissant</h3>
+                        <p>With Belgian dark chocolate</p>
+                        <span class="price">$4.50</span>
+                        <button class="btn-primary order-btn" data-item="Chocolate Croissant" data-price="4.50">Order Now</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1607478900766-efe13248b125?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Blueberry Muffin" loading="lazy">
+                        <h3>Blueberry Muffin</h3>
+                        <p>Fresh blueberries, crumb topping</p>
+                        <span class="price">$4.00</span>
+                        <button class="btn-primary order-btn" data-item="Blueberry Muffin" data-price="4.00">Order Now</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Avocado Toast" loading="lazy">
+                        <h3>Avocado Toast</h3>
+                        <p>Sourdough, avocado, microgreens</p>
+                        <span class="price">$8.50</span>
+                        <button class="btn-primary order-btn" data-item="Avocado Toast" data-price="8.50">Order Now</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Beans Menu -->
+            <section class="menu-section" id="beans-tab">
+                <h2 style="text-align: center; margin-bottom: 30px;">Coffee Beans for Home</h2>
+                <div class="beans-grid">
+                    <div class="bean-card">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Ethiopian Coffee Beans" loading="lazy">
+                        <h3>Ethiopian Yirgacheffe</h3>
+                        <p>Floral, citrus notes, light roast</p>
+                        <span class="price">$18 / 12oz</span>
+                        <button class="btn-primary order-btn" data-item="Ethiopian Yirgacheffe Beans" data-price="18.00">Add to Cart</button>
+                    </div>
+                    <div class="bean-card">
+                        <!-- Beautiful image for Colombian Supremo -->
+                        <img src="https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Colombian Coffee Beans" loading="lazy">
+                        <h3>Colombian Supremo</h3>
+                        <p>Nutty, chocolate, medium roast</p>
+                        <span class="price">$16 / 12oz</span>
+                        <button class="btn-primary order-btn" data-item="Colombian Supremo Beans" data-price="16.00">Add to Cart</button>
+                    </div>
+                    <div class="bean-card">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Sumatran Coffee Beans" loading="lazy">
+                        <h3>Sumatran Dark</h3>
+                        <p>Earthy, spicy, dark roast</p>
+                        <span class="price">$17 / 12oz</span>
+                        <button class="btn-primary order-btn" data-item="Sumatran Dark Beans" data-price="17.00">Add to Cart</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="special-notes">
+                <h3><i class="fas fa-leaf"></i> Special Notes</h3>
+                <p>All our coffee is ethically sourced from sustainable farms. We offer dairy alternatives: Oat, Almond, and Soy milk (+$0.75). Gluten-free pastry options available.</p>
+            </section>
+        </div>
+    </section>
+
+    <!-- ===== EVENTS SECTION ===== -->
+    <section id="events" class="page-section">
+        <div class="page-header">
+            <h1>Upcoming Events</h1>
+            <p>Join our coffee community for workshops and tastings</p>
+        </div>
+        
+        <div class="container">
+            <section class="events-intro" style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+                <p>We host monthly events to bring coffee lovers together. From beginner workshops to expert tastings, there's something for everyone. Most events are free with registration!</p>
+            </section>
+
+            <div class="events-grid">
+                <article class="event-card">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee Brewing Workshop" class="event-image" loading="lazy">
+                    <div class="event-header">
+                        <div class="event-date">
+                            <span class="day">15</span>
+                            <span class="month">MAR</span>
+                        </div>
+                        <div>
+                            <h3>Beginner's Coffee Brewing</h3>
+                            <p class="event-time"><i class="far fa-clock"></i> 2:00 PM - 4:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <p>Learn the basics of pour-over, French press, and espresso at home. Includes tasting session.</p>
+                        <div class="event-tags">
+                            <span class="tag">Free</span>
+                            <span class="tag">Beginner</span>
+                        </div>
+                        <button class="event-register" data-event="coffee-brewing">Register Now</button>
+                    </div>
+                </article>
+
+                <article class="event-card featured">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ethiopian Coffee Tasting" class="event-image" loading="lazy">
+                    <div class="event-header">
+                        <div class="event-date">
+                            <span class="day">22</span>
+                            <span class="month">MAR</span>
+                        </div>
+                        <div>
+                            <h3>Ethiopian Coffee Tasting</h3>
+                            <p class="event-time"><i class="far fa-clock"></i> 6:00 PM - 8:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <p>Explore the unique flavors of Ethiopian single-origin beans with our head barista.</p>
+                        <div class="event-tags">
+                            <span class="tag">$15</span>
+                            <span class="tag">Tasting</span>
+                        </div>
+                        <button class="event-register" data-event="ethiopian-tasting">Register Now</button>
+                    </div>
+                </article>
+
+                <article class="event-card">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Latte Art Workshop" class="event-image" loading="lazy">
+                    <div class="event-header">
+                        <div class="event-date">
+                            <span class="day">05</span>
+                            <span class="month">APR</span>
+                        </div>
+                        <div>
+                            <h3>Latte Art Workshop</h3>
+                            <p class="event-time"><i class="far fa-clock"></i> 3:00 PM - 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <p>Master the art of creating beautiful designs on your latte. All materials provided.</p>
+                        <div class="event-tags">
+                            <span class="tag">$25</span>
+                            <span class="tag">Hands-on</span>
+                        </div>
+                        <button class="event-register" data-event="latte-art">Register Now</button>
+                    </div>
+                </article>
+
+                <article class="event-card">
+                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee & Book Club" class="event-image" loading="lazy">
+                    <div class="event-header">
+                        <div class="event-date">
+                            <span class="day">12</span>
+                            <span class="month">APR</span>
+                        </div>
+                        <div>
+                            <h3>Coffee & Book Club</h3>
+                            <p class="event-time"><i class="far fa-clock"></i> 7:00 PM - 9:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <p>Monthly book discussion paired with specially selected coffee brews.</p>
+                        <div class="event-tags">
+                            <span class="tag">Free</span>
+                            <span class="tag">Social</span>
+                        </div>
+                        <button class="event-register" data-event="book-club">Register Now</button>
+                    </div>
+                </article>
+            </div>
+
+            <section class="event-reminder" style="text-align: center; margin-top: 80px; padding: 50px; background-color: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);">
+                <h3 style="margin-bottom: 20px;">Want to stay updated?</h3>
+                <p style="margin-bottom: 30px;">Subscribe to our newsletter for event announcements and coffee tips!</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" placeholder="Your email address" id="newsletterEmail" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </section>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact" class="page-section">
+        <div class="page-header">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you!</p>
+        </div>
+        
+        <div class="container">
+            <div class="contact-container">
+                <section class="contact-info">
+                    <h2 style="margin-bottom: 30px;">Visit Us</h2>
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>123 Coffee Street<br>Brew City, BC 12345</p>
+                            <button class="btn-secondary" id="getDirectionsBtn" style="margin-top: 10px; padding: 8px 16px; font-size: 0.9rem;">Get Directions</button>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Hours</h3>
+                            <table class="hours-table">
+                                <tr>
+                                    <td>Monday - Friday</td>
+                                    <td>7am - 9pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td>8am - 10pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td>8am - 8pm</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>(123) 456-7890</p>
+                            <button class="btn-secondary" id="callNowBtn" style="margin-top: 10px; padding: 8px 16px; font-size: 0.9rem;">Call Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>hello@brewandbean.com</p>
+                            <button class="btn-secondary" id="emailUsBtn" style="margin-top: 10px; padding: 8px 16px; font-size: 0.9rem;">Email Us</button>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <div class="map-overlay">
+                                <h3>Find Us Here</h3>
+                                <p>We're located in downtown Brew City, near Central Park. Plenty of parking available.</p>
+                                <button class="btn-primary" id="openMapsBtn">
+                                    <i class="fas fa-map-marker-alt"></i> Open in Maps
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="contact-form-section">
+                    <h2 style="margin-bottom: 30px;">Send a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" placeholder="John Smith" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="reservation">Table Reservation</option>
+                                <option value="event">Event Registration</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="wholesale">Wholesale Beans</option>
+                                <option value="career">Career Opportunity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="How can we help you today?" required></textarea>
+                        </div>
+                        
+                        <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter" style="margin-bottom: 0; font-weight: normal;">Subscribe to our newsletter for updates and promotions</label>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem; margin-top: 20px;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </section>
+            </div>
+            
+            <div class="contact-cta">
+                <h3>Need Immediate Assistance?</h3>
+                <p>Call us directly at <strong>(123) 456-7890</strong> during business hours</p>
+                <p style="margin-top: 10px;">Or visit our FAQ page for quick answers to common questions</p>
+                <button class="btn-secondary" style="background-color: white; color: var(--primary-brown); margin-top: 20px;" id="faqBtn">
+                    <i class="fas fa-question-circle"></i> View FAQ
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Brew & Bean Café</h3>
+                    <p>123 Coffee Street, Brew City</p>
+                    <p>Open: Mon-Sun 7am-9pm</p>
+                    <p>Phone: (123) 456-7890</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a class="nav-link" data-page="home">Home</a></li>
+                        <li><a class="nav-link" data-page="menu">Menu</a></li>
+                        <li><a class="nav-link" data-page="events">Events</a></li>
+                        <li><a class="nav-link" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#" title="Instagram" id="instagramLink"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Facebook" id="facebookLink"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Twitter" id="twitterLink"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="TripAdvisor" id="tripadvisorLink"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">Follow us for daily specials and updates!</p>
+                </div>
+            </div>
+            <p class="copyright">&copy; <span id="currentYear">2024</span> Brew & Bean Café. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #ff4444;"></i> for coffee lovers everywhere</p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ===== VARIABLES =====
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.querySelector('.nav-links');
+            const navLinksAll = document.querySelectorAll('.nav-link');
+            const pageSections = document.querySelectorAll('.page-section');
+            const carouselSlides = document.querySelectorAll('.carousel-slide');
+            const carouselDots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const menuSections = document.querySelectorAll('.menu-section');
+            const contactForm = document.getElementById('contactForm');
+            const newsletterForm = document.getElementById('newsletterForm');
+            const eventRegisterBtns = document.querySelectorAll('.event-register');
+            const currentYearSpan = document.getElementById('currentYear');
+            const orderBtns = document.querySelectorAll('.order-btn');
+            const faqBtn = document.getElementById('faqBtn');
+            
+            // Set current year
+            currentYearSpan.textContent = new Date().getFullYear();
+
+            // ===== DARK/LIGHT MODE TOGGLE =====
+            function updateThemeIcon(isDark) {
+                if (isDark) {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    themeToggle.setAttribute('title', 'Switch to light theme');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    themeToggle.setAttribute('title', 'Switch to dark theme');
+                }
+            }
+            
+            function toggleTheme() {
+                const isDark = body.classList.toggle('dark-theme');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeIcon(isDark);
+                showNotification(`Switched to ${isDark ? 'dark' : 'light'} theme`);
+            }
+            
+            // Initialize theme
+            const savedTheme = localStorage.getItem('theme');
+            
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-theme');
+                updateThemeIcon(true);
+            } else {
+                updateThemeIcon(false);
+            }
+            
+            themeToggle.addEventListener('click', toggleTheme);
+
+            // ===== MOBILE MENU TOGGLE =====
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !menuToggle.contains(e.target) && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                }
+            });
+
+            // ===== NOTIFICATION FUNCTION =====
+            function showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.style.backgroundColor = type === 'success' ? 'var(--accent-green)' : '#ff4444';
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+
+            // ===== PAGE NAVIGATION =====
+            function navigateToPage(pageId) {
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                const targetSection = document.getElementById(pageId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+                
+                navLinksAll.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+                const menuIcon = menuToggle.querySelector('i');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+            
+            navLinksAll.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('data-page');
+                    navigateToPage(pageId);
+                    history.pushState(null, null, `#${pageId}`);
+                });
+            });
+            
+            // Handle initial page load
+            const initialPage = window.location.hash.substring(1) || 'home';
+            navigateToPage(initialPage);
+
+            // ===== CAROUSEL =====
+            let currentSlide = 0;
+            const totalSlides = carouselSlides.length;
+            let slideInterval;
+            
+            function showSlide(index) {
+                carouselSlides.forEach(slide => slide.classList.remove('active'));
+                carouselDots.forEach(dot => dot.classList.remove('active'));
+                
+                carouselSlides[index].classList.add('active');
+                carouselDots[index].classList.add('active');
+                currentSlide = index;
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+            }
+            
+            function startCarousel() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            startCarousel();
+            
+            const carousel = document.querySelector('.carousel');
+            carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            carousel.addEventListener('mouseleave', startCarousel);
+            
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            
+            carouselDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
+
+            // ===== MENU TABS =====
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    menuSections.forEach(section => section.classList.remove('active'));
+                    
+                    btn.classList.add('active');
+                    const tabId = btn.getAttribute('data-tab');
+                    const targetSection = document.getElementById(`${tabId}-tab`);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                });
+            });
+
+            // ===== ORDER BUTTONS =====
+            orderBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const item = btn.getAttribute('data-item');
+                    const price = btn.getAttribute('data-price');
+                    
+                    const modal = document.createElement('div');
+                    modal.className = 'modal';
+                    modal.innerHTML = `
+                        <div class="modal-content">
+                            <h3>Order: ${item}</h3>
+                            <p style="margin-bottom: 20px;">Price: $${price}</p>
+                            <form id="orderForm">
+                                <label for="orderName">Your Name *</label>
+                                <input type="text" id="orderName" required>
+                                
+                                <label for="orderEmail">Email *</label>
+                                <input type="email" id="orderEmail" required>
+                                
+                                <label for="orderQuantity">Quantity</label>
+                                <select id="orderQuantity">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                
+                                <div class="modal-buttons">
+                                    <button type="submit" class="btn-primary">Place Order</button>
+                                    <button type="button" class="cancel-btn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    modal.querySelector('#orderForm').addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        document.body.removeChild(modal);
+                        showNotification(`Order placed for ${item}! Check your email for confirmation.`);
+                    });
+                    
+                    modal.querySelector('.cancel-btn').addEventListener('click', () => {
+                        document.body.removeChild(modal);
+                    });
+                });
+            });
+
+            // ===== EVENT REGISTRATION =====
+            eventRegisterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const eventCard = btn.closest('.event-card');
+                    const eventTitle = eventCard.querySelector('h3').textContent;
+                    
+                    const modal = document.createElement('div');
+                    modal.className = 'modal';
+                    modal.innerHTML = `
+                        <div class="modal-content">
+                            <h3>Register for: ${eventTitle}</h3>
+                            <form id="eventForm">
+                                <label for="regName">Name *</label>
+                                <input type="text" id="regName" required>
+                                
+                                <label for="regEmail">Email *</label>
+                                <input type="email" id="regEmail" required>
+                                
+                                <label for="regGuests">Number of Guests</label>
+                                <select id="regGuests">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                
+                                <div class="modal-buttons">
+                                    <button type="submit" class="btn-primary">Register</button>
+                                    <button type="button" class="cancel-btn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    modal.querySelector('#eventForm').addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        document.body.removeChild(modal);
+                        showNotification(`Registered for ${eventTitle}! A confirmation email has been sent.`);
+                    });
+                    
+                    modal.querySelector('.cancel-btn').addEventListener('click', () => {
+                        document.body.removeChild(modal);
+                    });
+                });
+            });
+
+            // ===== NEWSLETTER FORM =====
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('newsletterEmail').value;
+                    if (email && email.includes('@')) {
+                        showNotification('Subscribed to newsletter successfully!');
+                        newsletterForm.reset();
+                    } else {
+                        showNotification('Please enter a valid email address', 'error');
+                    }
+                });
+            }
+
+            // ===== CONTACT FORM =====
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    
+                    if (!name || !email || !message) {
+                        showNotification('Please fill in all required fields', 'error');
+                        return;
+                    }
+                    
+                    if (!email.includes('@')) {
+                        showNotification('Please enter a valid email address', 'error');
+                        return;
+                    }
+                    
+                    showNotification('Message sent successfully! We\'ll get back to you within 24 hours.');
+                    contactForm.reset();
+                });
+            }
+
+            // ===== CONTACT ACTION BUTTONS =====
+            document.getElementById('getDirectionsBtn')?.addEventListener('click', () => {
+                window.open('https://maps.google.com/?q=123+Coffee+Street+Brew+City', '_blank');
+            });
+            
+            document.getElementById('callNowBtn')?.addEventListener('click', () => {
+                window.location.href = 'tel:+1234567890';
+            });
+            
+            document.getElementById('emailUsBtn')?.addEventListener('click', () => {
+                window.location.href = 'mailto:hello@brewandbean.com';
+            });
+            
+            document.getElementById('openMapsBtn')?.addEventListener('click', () => {
+                window.open('https://maps.google.com/?q=123+Coffee+Street+Brew+City', '_blank');
+            });
+
+            // ===== FAQ BUTTON - NOW WORKING =====
+            if (faqBtn) {
+                faqBtn.addEventListener('click', function() {
+                    const modal = document.createElement('div');
+                    modal.className = 'modal';
+                    modal.innerHTML = `
+                        <div class="modal-content">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="faq-container">
+                                <div class="faq-category">
+                                    <h4>Orders & Payments</h4>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>How do I place an order?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            You can place an order directly through our website by clicking the "Order Now" or "Add to Cart" buttons on any product. For custom orders, please contact us via phone or email.
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>What payment methods do you accept?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and cash payments in-store. Online orders are securely processed through our payment gateway.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="faq-category">
+                                    <h4>Delivery & Pickup</h4>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>Do you offer delivery?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            Yes! We offer delivery within a 5-mile radius of our café. Delivery fee is $2.99 for orders under $15, free for orders over $15. Delivery typically takes 30-45 minutes.
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>Can I pick up my order in-store?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            Absolutely! Select "Pickup" at checkout and we'll have your order ready at our counter within 15-20 minutes. Just show us your order confirmation.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="faq-category">
+                                    <h4>Coffee & Products</h4>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>Where do you source your coffee beans?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            We source our beans directly from sustainable farms in Ethiopia, Colombia, and Sumatra. All our suppliers are Fair Trade certified and practice ethical farming methods.
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>Do you offer dairy-free alternatives?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            Yes! We offer oat milk, almond milk, and soy milk for an additional $0.75. All our syrups are also vegan-friendly.
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>Are your pastries gluten-free?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            We have a selection of gluten-free pastries available daily, including our popular gluten-free chocolate chip cookies and almond flour muffins. Please ask our staff for today's options.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="faq-category">
+                                    <h4>Events & Workshops</h4>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>How do I register for events?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            You can register for events directly on our website by clicking the "Register Now" button on any event card. You'll receive a confirmation email with all the details.
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>Are events refundable?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            Event registrations are refundable up to 48 hours before the event. Please contact us directly for cancellation requests.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="faq-category">
+                                    <h4>General</h4>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>Do you have Wi-Fi?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            Yes! We offer free high-speed Wi-Fi for all our customers. Just ask our staff for the password when you visit.
+                                        </div>
+                                    </div>
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span>Can I host a private event at your café?</span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            Absolutely! We offer space for private events, workshops, and meetings. Please contact us at events@brewandbean.com for availability and pricing.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-buttons">
+                                <button class="btn-primary" id="contactFromFaq">Contact Us</button>
+                                <button class="cancel-btn" id="closeFaqModal">Close</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    // Close modal when clicking close button
+                    modal.querySelector('#closeFaqModal').addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                    });
+                    
+                    // Contact button in FAQ modal
+                    modal.querySelector('#contactFromFaq').addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                        navigateToPage('contact');
+                        showNotification('Please fill out the contact form below!');
+                    });
+                    
+                    // Close modal when clicking outside
+                    modal.addEventListener('click', function(e) {
+                        if (e.target === modal) {
+                            document.body.removeChild(modal);
+                        }
+                    });
+                });
+            }
+
+            // ===== SOCIAL MEDIA LINKS =====
+            const socialLinks = {
+                instagramLink: 'https://instagram.com/brewandbean',
+                facebookLink: 'https://facebook.com/brewandbean',
+                twitterLink: 'https://twitter.com/brewandbean',
+                tripadvisorLink: 'https://tripadvisor.com/brewandbean'
+            };
+            
+            Object.keys(socialLinks).forEach(id => {
+                document.getElementById(id)?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.open(socialLinks[id], '_blank');
+                });
+            });
+
+            // ===== IMAGE LOADING ANIMATION =====
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease';
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+                // If image already loaded
+                if (img.complete) {
+                    img.style.opacity = '1';
+                }
+            });
+
+            // ===== HOVER EFFECTS =====
+            const cards = document.querySelectorAll('.product-card, .bean-card, .team-card, .value-item, .event-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // ===== RESIZE HANDLER =====
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
